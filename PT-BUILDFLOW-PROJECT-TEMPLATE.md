@@ -23,6 +23,7 @@ Planos de Módulo: apenas para features complexas.
 Modo 2: múltiplas janelas VS Code, agentes em paralelo.
 Use: framework completo, todos os protocolos ativos.
 Planos de Módulo e branches Git: obrigatórios por módulo.
+Hooks: recomendados — veja PT-BUILDFLOW-HOOKS.md
 ```
 
 ---

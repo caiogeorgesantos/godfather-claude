@@ -58,6 +58,7 @@ Before any action, read in this order:
 ├── EN-BUILDFLOW-AGENT.md
 ├── EN-BUILDFLOW-RESEARCH.md      ← Phase 1
 ├── EN-BUILDFLOW-DEV.md           ← Phase 7
+├── EN-BUILDFLOW-HOOKS.md         ← Optional safety gates
 │
 └── your-project/
     ├── CLAUDE.md                → Orchestrator identity

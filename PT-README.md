@@ -112,6 +112,7 @@ O produto nunca para. A Fase 10 alimenta de volta a Fase 3 ou 4 — sempre infor
 | Template de Projeto | `PT-BUILDFLOW-PROJECT-TEMPLATE.md` | Todas | ✅ |
 | Pesquisa | `PT-BUILDFLOW-RESEARCH.md` | Fase 1 | ✅ |
 | Dev | `PT-BUILDFLOW-DEV.md` | Fase 7 | ✅ |
+| Hooks | `PT-BUILDFLOW-HOOKS.md` | Todas | ✅ opcional |
 | Ideia | `BUILDFLOW-IDEA.md` | Fase 0 | ⏳ construir quando precisar |
 | Validação | `BUILDFLOW-VALIDATE.md` | Fase 2 | ⏳ construir quando precisar |
 | Especificação | `BUILDFLOW-SPEC.md` | Fase 3 | ⏳ construir quando precisar |
@@ -133,6 +134,7 @@ O produto nunca para. A Fase 10 alimenta de volta a Fase 3 ou 4 — sempre infor
 ├── PT-BUILDFLOW-AGENT.md
 ├── PT-BUILDFLOW-RESEARCH.md
 ├── PT-BUILDFLOW-DEV.md
+├── PT-BUILDFLOW-HOOKS.md         ← Gates de segurança (opcional)
 │
 └── seu-projeto/
     ├── CLAUDE.md                  → Identidade do Orquestrador

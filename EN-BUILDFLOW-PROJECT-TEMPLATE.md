@@ -29,6 +29,7 @@ Module Plans: only for complex features.
 Mode 2: multiple VS Code windows, agents in parallel.
 Use: full framework, all protocols active.
 Module Plans and Git branches: mandatory per module.
+Hooks: recommended — see EN-BUILDFLOW-HOOKS.md
 ```
 
 ---

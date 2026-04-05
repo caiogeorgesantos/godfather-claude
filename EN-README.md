@@ -112,6 +112,7 @@ The product never stops. Phase 10 feeds back into Phase 3 or 4 — always inform
 | Project Template | `EN-BUILDFLOW-PROJECT-TEMPLATE.md` | All | ✅ |
 | Research | `EN-BUILDFLOW-RESEARCH.md` | Phase 1 | ✅ |
 | Dev | `EN-BUILDFLOW-DEV.md` | Phase 7 | ✅ |
+| Hooks | `EN-BUILDFLOW-HOOKS.md` | All | ✅ optional |
 | Idea | `BUILDFLOW-IDEA.md` | Phase 0 | ⏳ build when needed |
 | Validate | `BUILDFLOW-VALIDATE.md` | Phase 2 | ⏳ build when needed |
 | Spec | `BUILDFLOW-SPEC.md` | Phase 3 | ⏳ build when needed |
@@ -133,6 +134,7 @@ The product never stops. Phase 10 feeds back into Phase 3 or 4 — always inform
 ├── EN-BUILDFLOW-AGENT.md
 ├── EN-BUILDFLOW-RESEARCH.md
 ├── EN-BUILDFLOW-DEV.md
+├── EN-BUILDFLOW-HOOKS.md         ← Optional safety gates
 │
 └── your-project/
     ├── CLAUDE.md                  → Orchestrator identity

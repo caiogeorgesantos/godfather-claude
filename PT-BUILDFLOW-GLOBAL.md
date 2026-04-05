@@ -54,6 +54,7 @@ Antes de qualquer ação, leia nesta ordem:
 ├── PT-BUILDFLOW-AGENT.md
 ├── PT-BUILDFLOW-RESEARCH.md
 ├── PT-BUILDFLOW-DEV.md
+├── PT-BUILDFLOW-HOOKS.md         ← Gates de segurança (opcional)
 │
 └── seu-projeto/
     ├── CLAUDE.md                → Identidade do Orquestrador
