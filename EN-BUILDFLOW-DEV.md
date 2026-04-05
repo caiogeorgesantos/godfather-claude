@@ -32,27 +32,77 @@ Before opening Claude Code, confirm:
 
 ---
 
+## SPEC.md and ARCH.md — New vs Existing Projects
+
+### New project (starting from scratch)
+Create SPEC.md and ARCH.md as full documents before any code is written.
+Follow Phases 3 and 5 of the buildflow framework.
+
+### Existing project (already has documentation)
+Do NOT create duplicate documents. Create lightweight wrappers (~100 lines each):
+
+```
+SPEC.md (wrapper) — index + gate
+- What this product is (2-3 lines)
+- Links to existing spec documents
+- What is OUT of scope
+- Quality criteria
+- Gate: Director approves this before any module starts
+
+ARCH.md (wrapper) — index + gate  
+- Stack defined (1 line each)
+- Links to existing technical documents
+- Module list in execution order
+- Gate: Director approves this before any code is written
+```
+
+The wrapper functions as a gate — not a duplicate.
+If SPEC.md and ARCH.md wrappers don't exist: create them before starting.
+If they already exist: verify they are approved before proceeding.
+
+---
+
 ## The Development Squad — Claude Code
 
 Each agent runs in a separate VS Code window.
 Each window points to the project folder.
 Each agent has its own CLAUDE.md, MEMORY.md, and DECISIONS.md.
 
-### Standard Development Squad
+### Scalable Squad — choose based on module complexity
+
+**Simple module** — follows an existing template, no new integrations:
+```
+Orchestrator + Developer + Code Auditor
+QA and Security run once before launch — not per module
+```
+
+**Complex module** — new architecture, external integration, infra, auth, design system:
+```
+Full squad: Orchestrator + Architect + Developer + Code Auditor + QA Tester + Security Reviewer
+QA and Security run per module
+```
+
+**How to classify a module:**
+- Simple: calculator, content page, form following existing pattern
+- Complex: authentication, payment, new database schema, API integration, infrastructure
+
+The Orchestrator classifies each module before activating the squad.
+
+### Full Squad Reference
 
 | Agent | Role | When to activate |
 |-------|------|-----------------|
 | Orchestrator | Coordinates squad, maintains STATUS.md | Always active |
-| Architect | Defines ARCH.md + module plans before each module | Phase 0 + before each module |
-| Developer | Writes the code using specialized writers | Phase 1+ |
+| Architect | Defines ARCH.md + module plans before each module | Complex modules + Phase 0 |
+| Developer | Writes the code using specialized writers | All modules |
 | Code Auditor | Reviews every delivery from Developer | After every delivery |
-| QA Tester | Tests what was built | After Auditor approves |
-| Security Reviewer | Checks for vulnerabilities | Before production |
+| QA Tester | Tests what was built | Complex modules + before launch |
+| Security Reviewer | Checks for vulnerabilities | Complex modules + before launch |
 
 ### Rules for the development squad
 
-- No agent writes code before the Architect delivers ARCH.md
-- No agent writes code before the Architect delivers the module plan
+- No agent writes code before SPEC.md and ARCH.md are approved
+- No agent writes code before the module plan is approved
 - No feature goes to QA before passing Code Auditor
 - No code goes to production before Security Reviewer approves
 - Every agent reads SPEC.md and ARCH.md before starting

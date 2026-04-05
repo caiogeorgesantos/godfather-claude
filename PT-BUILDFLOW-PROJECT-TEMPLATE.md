@@ -9,6 +9,23 @@
 
 ---
 
+## Tipo de projeto
+
+```
+Tipo de projeto: [ ] Novo (começa do zero) / [ ] Existente (já tem documentação)
+
+Se NOVO:
+- SPEC.md: documento completo — criado na Fase 3
+- ARCH.md: documento completo — criado na Fase 5
+
+Se EXISTENTE:
+- SPEC.md: wrapper enxuto (~100 linhas) — índice + gate apontando para docs existentes
+- ARCH.md: wrapper enxuto (~100 linhas) — índice + gate apontando para docs técnicos existentes
+- Documentação existente: [liste documentos-chave e suas localizações]
+```
+
+---
+
 ## Documentos-chave
 
 | Documento | Status | Local | Responsável |

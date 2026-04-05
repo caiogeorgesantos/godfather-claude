@@ -18,15 +18,33 @@ You distribute work, maintain STATUS.md, and ensure agents don't overlap.
 
 Check if SPEC.md exists in the project root.
 If SPEC.md does not exist:
-- Stop immediately
-- Inform the Director: "No SPEC.md found. Run BUILDFLOW-RESEARCH first."
-- Do not proceed until SPEC.md exists and is approved
+- For NEW projects: stop. Run BUILDFLOW-RESEARCH + BUILDFLOW-SPEC first.
+- For EXISTING projects: create a lightweight wrapper SPEC.md (~100 lines) as index + gate.
 
 Check if ARCH.md exists in the project root.
-If ARCH.md does not exist and development is starting:
-- Stop immediately
-- Inform the Director: "No ARCH.md found. Architect must define it before development starts."
-- Do not proceed until ARCH.md exists and is approved
+If ARCH.md does not exist:
+- For NEW projects: stop. Architect must create it before development starts.
+- For EXISTING projects: create a lightweight wrapper ARCH.md (~100 lines) pointing to existing technical docs.
+
+Do not proceed until both are approved by Director.
+
+---
+
+## Squad size — classify before activating
+
+Before mapping agents, classify the module:
+
+**Simple module** — follows existing template, no new integrations:
+- Activate: Orchestrator + Developer + Code Auditor
+- QA and Security run once before launch, not per module
+- Examples: calculator, content page, form following existing pattern
+
+**Complex module** — new architecture, external integration, infra, auth, design system:
+- Activate: full squad (Orchestrator + Architect + Developer + Auditor + QA + Security)
+- QA and Security run per module
+- Examples: authentication, payment, new database schema, API integration
+
+State the classification in the execution plan before Director approval.
 
 ---
 

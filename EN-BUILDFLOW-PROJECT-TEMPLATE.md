@@ -9,6 +9,23 @@
 
 ---
 
+## Project type
+
+```
+Project type: [ ] New (starting from scratch) / [ ] Existing (already has documentation)
+
+If NEW:
+- SPEC.md: full document — created in Phase 3
+- ARCH.md: full document — created in Phase 5
+
+If EXISTING:
+- SPEC.md: lightweight wrapper (~100 lines) — index + gate pointing to existing docs
+- ARCH.md: lightweight wrapper (~100 lines) — index + gate pointing to existing technical docs
+- Existing documentation: [list key documents and their locations]
+```
+
+---
+
 ## Key documents
 
 | Document | Status | Location | Owner |

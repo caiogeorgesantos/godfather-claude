@@ -10,15 +10,33 @@ Leia PT-BUILDFLOW-GLOBAL.md antes deste documento.
 
 Verifique se SPEC.md existe na raiz do projeto.
 Se SPEC.md não existir:
-- Pare imediatamente
-- Informe o Diretor: "SPEC.md não encontrado. Execute BUILDFLOW-RESEARCH primeiro."
-- Não prossiga até que SPEC.md exista e seja aprovado
+- Para projetos NOVOS: pare. Execute BUILDFLOW-RESEARCH + BUILDFLOW-SPEC primeiro.
+- Para projetos EXISTENTES: crie um wrapper enxuto SPEC.md (~100 linhas) como índice + gate.
 
 Verifique se ARCH.md existe na raiz do projeto.
-Se ARCH.md não existir e o desenvolvimento está começando:
-- Pare imediatamente
-- Informe o Diretor: "ARCH.md não encontrado. O Arquiteto deve defini-lo antes do desenvolvimento começar."
-- Não prossiga até que ARCH.md exista e seja aprovado
+Se ARCH.md não existir:
+- Para projetos NOVOS: pare. O Arquiteto deve criá-lo antes do desenvolvimento começar.
+- Para projetos EXISTENTES: crie um wrapper enxuto ARCH.md (~100 linhas) apontando para docs técnicos existentes.
+
+Não prossiga até que ambos sejam aprovados pelo Diretor.
+
+---
+
+## Tamanho da squad — classifique antes de ativar
+
+Antes de mapear agentes, classifique o módulo:
+
+**Módulo simples** — segue template existente, sem novas integrações:
+- Ative: Orquestrador + Desenvolvedor + Auditor de Código
+- QA e Segurança rodam uma vez antes do lançamento, não por módulo
+- Exemplos: calculadora, página de conteúdo, formulário seguindo padrão existente
+
+**Módulo complexo** — nova arquitetura, integração externa, infra, auth, design system:
+- Ative: squad completa (Orquestrador + Arquiteto + Desenvolvedor + Auditor + QA + Segurança)
+- QA e Segurança rodam por módulo
+- Exemplos: autenticação, pagamento, novo schema de banco, integração de API
+
+Declare a classificação no plano de execução antes da aprovação do Diretor.
 
 ---
 

@@ -32,27 +32,77 @@ Antes de abrir o Claude Code, confirme:
 
 ---
 
+## SPEC.md e ARCH.md — Projetos Novos vs Existentes
+
+### Projeto novo (começa do zero)
+Crie SPEC.md e ARCH.md como documentos completos antes de qualquer código ser escrito.
+Siga as Fases 3 e 5 do framework buildflow.
+
+### Projeto existente (já tem documentação)
+NÃO crie documentos duplicados. Crie wrappers enxutos (~100 linhas cada):
+
+```
+SPEC.md (wrapper) — índice + gate
+- O que é este produto (2-3 linhas)
+- Links para documentos de spec existentes
+- O que está FORA do escopo
+- Critérios de qualidade
+- Gate: Diretor aprova antes de qualquer módulo começar
+
+ARCH.md (wrapper) — índice + gate
+- Stack definida (1 linha cada)
+- Links para documentos técnicos existentes
+- Lista de módulos na ordem de execução
+- Gate: Diretor aprova antes de qualquer código ser escrito
+```
+
+O wrapper funciona como gate — não como duplicata.
+Se SPEC.md e ARCH.md wrappers não existem: crie antes de começar.
+Se já existem: verifique se estão aprovados antes de prosseguir.
+
+---
+
 ## A Squad de Desenvolvimento — Claude Code
 
 Cada agente roda em uma janela separada do VS Code.
 Cada janela aponta para a pasta do projeto.
 Cada agente tem seu próprio CLAUDE.md, MEMORY.md e DECISIONS.md.
 
-### Squad Padrão de Desenvolvimento
+### Squad Escalável — escolha pela complexidade do módulo
+
+**Módulo simples** — segue template existente, sem novas integrações:
+```
+Orquestrador + Desenvolvedor + Auditor de Código
+QA e Segurança rodam uma vez antes do lançamento — não por módulo
+```
+
+**Módulo complexo** — nova arquitetura, integração externa, infra, auth, design system:
+```
+Squad completa: Orquestrador + Arquiteto + Desenvolvedor + Auditor + QA Tester + Revisor de Segurança
+QA e Segurança rodam por módulo
+```
+
+**Como classificar um módulo:**
+- Simples: calculadora, página de conteúdo, formulário seguindo padrão existente
+- Complexo: autenticação, pagamento, novo schema de banco, integração de API, infraestrutura
+
+O Orquestrador classifica cada módulo antes de ativar a squad.
+
+### Referência da Squad Completa
 
 | Agente | Papel | Quando ativar |
 |--------|-------|---------------|
 | Orquestrador | Coordena squad, mantém STATUS.md | Sempre ativo |
-| Arquiteto | Define ARCH.md + planos de módulo antes de cada módulo | Fase 0 + antes de cada módulo |
-| Desenvolvedor | Escreve o código usando writers especializados | Fase 1+ |
+| Arquiteto | ARCH.md + planos de módulo | Módulos complexos + Fase 0 |
+| Desenvolvedor | Escreve código usando writers especializados | Todos os módulos |
 | Auditor de Código | Revisa toda entrega do Desenvolvedor | Após toda entrega |
-| QA Tester | Testa o que foi construído | Após Auditor aprovar |
-| Revisor de Segurança | Verifica vulnerabilidades | Antes da produção |
+| QA Tester | Testa o que foi construído | Módulos complexos + antes do lançamento |
+| Revisor de Segurança | Verifica vulnerabilidades | Módulos complexos + antes do lançamento |
 
 ### Regras para a squad de desenvolvimento
 
-- Nenhum agente escreve código antes do Arquiteto entregar o ARCH.md
-- Nenhum agente escreve código antes do Arquiteto entregar o Plano do Módulo
+- Nenhum agente escreve código antes de SPEC.md e ARCH.md serem aprovados
+- Nenhum agente escreve código antes do plano do módulo ser aprovado
 - Nenhuma feature vai para QA antes de passar pelo Auditor de Código
 - Nenhum código vai para produção antes do Revisor de Segurança aprovar
 - Todo agente lê SPEC.md e ARCH.md antes de começar
