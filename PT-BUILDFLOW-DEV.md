@@ -32,6 +32,27 @@ Antes de abrir o Claude Code, confirme:
 
 ---
 
+## Modo de operação — confirme antes de abrir o Claude Code
+
+Leia o BUILDFLOW-PROJECT.md para confirmar o modo:
+
+**Modo 1 — Agente Único:**
+- Arquivos de controle obrigatórios: SPEC.md + ARCH.md aprovados
+- Planos de Módulo: apenas para features complexas
+- Branches Git: opcionais
+- Sem ativação de squad, briefings ou pastas de agente
+- Prossiga diretamente para execução
+
+**Modo 2 — Squad Multi-Agente:**
+- Todos os quality gates se aplicam
+- Planos de Módulo: obrigatórios para cada módulo
+- Branches Git: obrigatórias por módulo
+- Ativação completa da squad obrigatória
+
+Se o modo não estiver declarado: pergunte ao Diretor antes de prosseguir.
+
+---
+
 ## SPEC.md e ARCH.md — Projetos Novos vs Existentes
 
 ### Projeto novo (começa do zero)

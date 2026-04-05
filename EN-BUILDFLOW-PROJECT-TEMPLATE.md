@@ -9,6 +9,30 @@
 
 ---
 
+## Operating mode
+
+
+
+---
+
+## Operating mode
+
+Declare before starting any work:
+
+```
+Operating mode: [ ] Mode 1 — Single Agent / [ ] Mode 2 — Multi-Agent Squad
+
+Mode 1: one conversation, one agent. Use control files only.
+Skip: squad protocol, briefings, handoffs, agent folders.
+Module Plans: only for complex features.
+
+Mode 2: multiple VS Code windows, agents in parallel.
+Use: full framework, all protocols active.
+Module Plans and Git branches: mandatory per module.
+```
+
+---
+
 ## Project type
 
 ```

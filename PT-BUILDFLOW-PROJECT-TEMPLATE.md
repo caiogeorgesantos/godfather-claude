@@ -9,6 +9,24 @@
 
 ---
 
+## Modo de operação
+
+Declare antes de qualquer trabalho:
+
+```
+Modo de operação: [ ] Modo 1 — Agente Único / [ ] Modo 2 — Squad Multi-Agente
+
+Modo 1: uma conversa, um agente. Use apenas arquivos de controle.
+Ignore: protocolo de squad, briefings, handoffs, pastas de agente.
+Planos de Módulo: apenas para features complexas.
+
+Modo 2: múltiplas janelas VS Code, agentes em paralelo.
+Use: framework completo, todos os protocolos ativos.
+Planos de Módulo e branches Git: obrigatórios por módulo.
+```
+
+---
+
 ## Tipo de projeto
 
 ```

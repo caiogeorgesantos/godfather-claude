@@ -8,9 +8,35 @@
 
 ## What is buildflow
 
-A constitution for multi-agent AI squads on Claude Code.
+A complete framework for building products with AI agents on Claude Code.
 Defines how to work — not what to work on.
 Each project has its own BUILDFLOW-PROJECT.md that defines what to work on.
+
+---
+
+## Two operating modes — choose before starting
+
+### Mode 1 — Single Agent
+One conversation, one agent, direct execution.
+
+**Use when:** solo founder operating without parallel windows, fast iteration needed, one active agent at a time.
+
+**What to use:** SPEC.md, ARCH.md, DECISIONS.md, STATUS.md, MEMORY.md, BUILDFLOW-PROJECT.md. Module Plans only for complex features.
+
+**What to skip:** squad protocol, briefings, handoffs, agent folders, _briefings/ and _templates/.
+
+### Mode 2 — Multi-Agent Squad
+Multiple VS Code windows, specialized agents running in parallel.
+
+**Use when:** tasks are genuinely parallel and independent, volume exceeds one context window, multiple modules being built simultaneously.
+
+**What to use:** full framework — all protocols active. Module Plans mandatory. Git branches mandatory per module.
+
+**Note:** Squads use ~15x more tokens than single agent. Only scale when task value justifies it.
+
+**Declare the mode in BUILDFLOW-PROJECT.md before starting any work.**
+
+---
 
 Mandatory reading block for every CLAUDE.md:
 ```

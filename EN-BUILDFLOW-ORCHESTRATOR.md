@@ -30,6 +30,25 @@ Do not proceed until both are approved by Director.
 
 ---
 
+## Operating mode — confirm before anything else
+
+Read BUILDFLOW-PROJECT.md to confirm the operating mode:
+
+**Mode 1 — Single Agent:**
+- Skip squad activation, briefings, handoffs, agent folders
+- Use control files only: SPEC.md, ARCH.md, DECISIONS.md, STATUS.md, MEMORY.md
+- Module Plans: only for complex features (new architecture, external integration, infra, auth)
+- Proceed directly to execution after Director confirms task
+
+**Mode 2 — Multi-Agent Squad:**
+- Follow full squad protocol below
+- Module Plans: mandatory for every module
+- Git branches: mandatory per module
+
+If mode is not declared in BUILDFLOW-PROJECT.md: ask Director before proceeding.
+
+---
+
 ## Squad size — classify before activating
 
 Before mapping agents, classify the module:

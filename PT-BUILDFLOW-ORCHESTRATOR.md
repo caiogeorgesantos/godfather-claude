@@ -22,6 +22,25 @@ Não prossiga até que ambos sejam aprovados pelo Diretor.
 
 ---
 
+## Modo de operação — confirme antes de qualquer coisa
+
+Leia o BUILDFLOW-PROJECT.md para confirmar o modo:
+
+**Modo 1 — Agente Único:**
+- Ignore ativação de squad, briefings, handoffs, pastas de agente
+- Use apenas arquivos de controle: SPEC.md, ARCH.md, DECISIONS.md, STATUS.md, MEMORY.md
+- Planos de Módulo: apenas para features complexas
+- Prossiga diretamente para execução após Diretor confirmar tarefa
+
+**Modo 2 — Squad Multi-Agente:**
+- Siga o protocolo completo de squad abaixo
+- Planos de Módulo: obrigatórios para cada módulo
+- Branches Git: obrigatórias por módulo
+
+Se o modo não estiver declarado no BUILDFLOW-PROJECT.md: pergunte ao Diretor antes de prosseguir.
+
+---
+
 ## Tamanho da squad — classifique antes de ativar
 
 Antes de mapear agentes, classifique o módulo:

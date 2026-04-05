@@ -12,6 +12,28 @@ Um framework completo para construir produtos com agentes de IA — do zero ao i
 Define **como trabalhar** — não o que trabalhar.
 Cada projeto tem seu próprio BUILDFLOW-PROJECT.md que define o que trabalhar.
 
+---
+
+## Dois modos de operação — escolha antes de começar
+
+### Modo 1 — Agente Único
+Uma conversa, um agente, execução direta.
+
+**Use quando:** founder solo sem janelas paralelas, iteração rápida necessária, um agente ativo por vez.
+
+**O que usar:** SPEC.md, ARCH.md, DECISIONS.md, STATUS.md, MEMORY.md, BUILDFLOW-PROJECT.md. Planos de Módulo apenas para features complexas.
+
+**O que ignorar:** protocolo de squad, briefings, handoffs, pastas de agente.
+
+### Modo 2 — Squad Multi-Agente
+Múltiplas janelas do VS Code, agentes especializados em paralelo.
+
+**Use quando:** tarefas genuinamente paralelas e independentes, volume excede uma janela de contexto.
+
+**O que usar:** framework completo — todos os protocolos ativos. Planos de Módulo e branches Git obrigatórios por módulo.
+
+**Declare o modo no BUILDFLOW-PROJECT.md antes de qualquer trabalho.**
+
 Bloco de leitura obrigatória para todo CLAUDE.md:
 ```
 Antes de qualquer ação, leia nesta ordem:
