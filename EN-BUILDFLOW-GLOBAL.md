@@ -40,7 +40,7 @@ Multiple VS Code windows, specialized agents running in parallel.
 
 Mandatory reading block for every CLAUDE.md:
 ```
-Before any action, read in this order:
+Before any action, read in this order (adjust path to where you saved the buildflow files):
 1. ~/Documents/Claude/EN-BUILDFLOW-GLOBAL.md
 2. ~/Documents/Claude/EN-BUILDFLOW-ORCHESTRATOR.md  ← Orchestrator only
 3. ~/Documents/Claude/EN-BUILDFLOW-AGENT.md          ← Agents only
@@ -52,7 +52,7 @@ Before any action, read in this order:
 ## Folder structure
 
 ```
-~/Documents/Claude/
+~/Documents/Claude/              ← or ~/Documents/Claude/buildflow/ — use wherever you saved the files
 ├── EN-BUILDFLOW-GLOBAL.md
 ├── EN-BUILDFLOW-ORCHESTRATOR.md
 ├── EN-BUILDFLOW-AGENT.md
@@ -118,6 +118,15 @@ IRREVERSIBLE → stop + describe intended action + wait for Director approval
 ⏳ AWAITING APPROVAL:
 - [irreversible action] → [reason]
 ```
+
+---
+
+## Subagents vs Separate Windows
+
+**Separate window** → persistent memory needed across sessions
+**Subagent** → parallel task within one session, no cross-session memory needed
+
+When in doubt: separate window.
 
 ---
 

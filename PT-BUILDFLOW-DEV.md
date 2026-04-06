@@ -53,6 +53,15 @@ Se o modo não estiver declarado: pergunte ao Diretor antes de prosseguir.
 
 ---
 
+## Subagentes vs Janelas Separadas
+
+**Janela separada** → agente precisa de memória entre sessões (Desenvolvedor, Auditor, Orquestrador, QA)
+**Subagente** → tarefa paralela dentro de uma sessão, sem necessidade de memória (pesquisa no /plan, auditoria paralela de arquivos, atualização de STATUS.md)
+
+Na dúvida: janela separada. Subagentes são uma otimização, não um padrão.
+
+---
+
 ## SPEC.md e ARCH.md — Projetos Novos vs Existentes
 
 ### Projeto novo (começa do zero)

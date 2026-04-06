@@ -64,8 +64,15 @@ e reporta ao Diretor em vez de prosseguir.
 
 ### Hook 2 — Proteção de Arquivos Críticos (PreToolUse)
 
+⚠️ **Leia antes de instalar:** Este hook bloqueia TODAS as edições no DECISIONS.md — inclusive adicionar novas entradas. Na prática, os agentes precisam fazer append no DECISIONS.md toda sessão. Instalar este hook significa que o agente ficará bloqueado em seu trabalho rotineiro e precisará de intervenção manual toda vez que tentar registrar uma decisão.
+
+**Recomendação: não instale o Hook 2 na maioria dos projetos.** O protocolo já define o DECISIONS.md como append-only. Confie na regra, não na imposição técnica. O Hook 1 é o que realmente importa.
+
+**Quando o Hook 2 faz sentido:** projetos com múltiplos contribuidores humanos onde sobrescritas acidentais são um risco real, ou sistemas de produção de alto risco onde a fricção extra vale a pena.
+
+Se instalar e precisar adicionar uma nova decisão: desative o hook temporariamente no settings.json, faça a adição, depois reative.
+
 Impede que agentes editem o DECISIONS.md sem instrução explícita do Diretor.
-Este arquivo é um registro permanente — apenas adições são permitidas.
 
 **Adicione ao `.claude/settings.json`:**
 ```json
@@ -242,6 +249,34 @@ Isso mostra todos os hooks configurados com seu evento e matcher.
 
 Apenas o exit code 2 realmente bloqueia uma ação.
 Se um hook de segurança usar exit 1, não há imposição real.
+
+---
+
+## Regra de segurança — nunca hardcode tokens em comandos permitidos
+
+Quando o Claude Code pede permissão para rodar um comando como:
+```
+curl -H "Authorization: Bearer eyJ0eX..." https://api.example.com
+```
+
+**Nunca clique em "Sempre permitir"** — isso salva o comando completo incluindo o token no `.claude/settings.json`.
+
+Em vez disso:
+1. Clique em "Permitir uma vez" para aquela chamada específica
+2. Use variáveis de ambiente para tokens em todos os comandos futuros:
+   ```bash
+   curl -H "Authorization: Bearer ${API_TOKEN}" https://api.example.com
+   ```
+3. Aí "Sempre permitir" é seguro — o token não está no comando
+
+Verifique periodicamente o `.claude/settings.json` para credenciais hardcoded.
+Se encontrar: remova a entrada, rode novos tokens se necessário, e use variáveis de ambiente.
+
+Garanta que `.claude/settings.json` está no seu `.gitignore`:
+```
+.claude/settings.json
+.claude/settings.local.json
+```
 
 ---
 

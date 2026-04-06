@@ -22,6 +22,16 @@ Não prossiga até que ambos sejam aprovados pelo Diretor.
 
 ---
 
+## Subagentes vs Janelas Separadas
+
+**Janela separada** → agente precisa de memória entre sessões → abra nova janela do VS Code
+**Subagente** → tarefa paralela dentro desta sessão, sem necessidade de memória → use a ferramenta Agent
+
+Exemplos de uso de subagente: /plan rodando pesquisa paralela, auditando múltiplos arquivos simultaneamente, atualizando STATUS.md enquanto coordena.
+Exemplos que exigem janela separada: Desenvolvedor, Auditor de Código, QA Tester, qualquer agente que precise de memória entre sessões.
+
+---
+
 ## Modo de operação — confirme antes de qualquer coisa
 
 Leia o BUILDFLOW-PROJECT.md para confirmar o modo:

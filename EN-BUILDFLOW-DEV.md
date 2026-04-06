@@ -53,6 +53,15 @@ If mode is not declared: ask Director before proceeding.
 
 ---
 
+## Subagents vs Separate Windows
+
+**Separate window** → agent needs memory across sessions (Developer, Auditor, Orchestrator, QA)
+**Subagent** → parallel task within one session, no memory needed (/plan research, parallel file audit, STATUS.md update)
+
+When in doubt: separate window. Subagents are an optimization, not a default.
+
+---
+
 ## SPEC.md and ARCH.md — New vs Existing Projects
 
 ### New project (starting from scratch)

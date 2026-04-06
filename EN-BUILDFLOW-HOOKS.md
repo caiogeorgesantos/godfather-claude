@@ -64,8 +64,15 @@ and reports to Director instead of proceeding.
 
 ### Hook 2 — Critical File Protection (PreToolUse)
 
-Prevents agents from editing DECISIONS.md and approved ARCH.md
-without explicit Director instruction. These files are permanent records.
+⚠️ **Read before installing:** This hook blocks ALL edits to DECISIONS.md — including adding new entries. In practice, agents need to append to DECISIONS.md every session. Installing this hook means the agent will be blocked from its own routine work and will need manual intervention every time it tries to log a decision.
+
+**Recommendation: skip Hook 2 for most projects.** The protocol already defines DECISIONS.md as append-only. Trust the rule, not the enforcement. Hook 1 is the one that matters.
+
+**When Hook 2 does make sense:** projects with multiple human contributors where accidental overwrites are a real risk, or high-stakes production systems where an extra gate is worth the friction.
+
+If you install it and want to add a new decision: temporarily disable the hook in settings.json, make the addition, then re-enable.
+
+Prevents agents from editing DECISIONS.md without explicit Director instruction.
 
 **Add to `.claude/settings.json`:**
 ```json
@@ -271,6 +278,34 @@ This shows all configured hooks with their event and matcher.
 
 Only exit code 2 actually blocks an action.
 If a security hook uses exit 1, it provides no enforcement.
+
+---
+
+## Security rule — never hardcode tokens in allowed commands
+
+When Claude Code asks permission to run a command like:
+```
+curl -H "Authorization: Bearer eyJ0eX..." https://api.example.com
+```
+
+**Never click "Always allow"** — this saves the full command including the token to `.claude/settings.json`.
+
+Instead:
+1. Click "Allow once" for that specific call
+2. Use environment variables for tokens in all future commands:
+   ```bash
+   curl -H "Authorization: Bearer ${API_TOKEN}" https://api.example.com
+   ```
+3. Then "Always allow" is safe — the token is not in the command
+
+Check `.claude/settings.json` periodically for hardcoded credentials.
+If found: remove the entry, rotate the token if in doubt, and use env vars going forward.
+
+Ensure `.claude/settings.json` is in your `.gitignore`:
+```
+.claude/settings.json
+.claude/settings.local.json
+```
 
 ---
 

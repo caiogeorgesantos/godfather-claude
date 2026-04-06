@@ -30,6 +30,16 @@ Do not proceed until both are approved by Director.
 
 ---
 
+## Subagents vs Separate Windows
+
+**Separate window** → agent needs memory across sessions → open new VS Code window
+**Subagent** → parallel task within this session, no memory needed → use Agent tool
+
+Examples of subagent use: /plan running parallel research, auditing multiple files simultaneously, updating STATUS.md while coordinating.
+Examples requiring separate window: Developer, Code Auditor, QA Tester, any agent that needs cross-session memory.
+
+---
+
 ## Operating mode — confirm before anything else
 
 Read BUILDFLOW-PROJECT.md to confirm the operating mode:

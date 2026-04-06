@@ -36,7 +36,7 @@ Múltiplas janelas do VS Code, agentes especializados em paralelo.
 
 Bloco de leitura obrigatória para todo CLAUDE.md:
 ```
-Antes de qualquer ação, leia nesta ordem:
+Antes de qualquer ação, leia nesta ordem (ajuste o caminho para onde você salvou os arquivos buildflow):
 1. ~/Documents/Claude/PT-BUILDFLOW-GLOBAL.md
 2. ~/Documents/Claude/PT-BUILDFLOW-ORCHESTRATOR.md  ← Somente Orquestrador
 3. ~/Documents/Claude/PT-BUILDFLOW-AGENT.md          ← Somente Agentes
@@ -48,7 +48,7 @@ Antes de qualquer ação, leia nesta ordem:
 ## Estrutura de pastas
 
 ```
-~/Documents/Claude/
+~/Documents/Claude/              ← ou ~/Documents/Claude/buildflow/ — use onde você salvou os arquivos
 ├── PT-BUILDFLOW-GLOBAL.md
 ├── PT-BUILDFLOW-ORCHESTRATOR.md
 ├── PT-BUILDFLOW-AGENT.md
@@ -114,6 +114,15 @@ IRREVERSÍVEL → pare + descreva a ação pretendida + aguarde aprovação do D
 ⏳ AGUARDANDO APROVAÇÃO:
 - [ação irreversível] → [motivo]
 ```
+
+---
+
+## Subagentes vs Janelas Separadas
+
+**Janela separada** → memória persistente necessária entre sessões
+**Subagente** → tarefa paralela dentro de uma sessão, sem necessidade de memória entre sessões
+
+Na dúvida: janela separada.
 
 ---
 
