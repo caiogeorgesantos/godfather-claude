@@ -1,117 +1,119 @@
-# BUILDFLOW-PROJETO — [Nome do Projeto]
-# Este arquivo é o CLAUDE.md do projeto. Claude Code lê automaticamente toda sessão.
-# Versão: 3.0 · 2026 · Framework: github.com/caiogeorgesantos/buildflow
+# BUILDFLOW-PROJETO — [Project Name]
+# This file is the project's CLAUDE.md. Claude Code reads it automatically every session.
+# Version: 4.0 · 2026 · Framework: github.com/caiogeorgesantos/buildflow
 
 ---
 
-## Projeto
+## Project
 
-- **Nome:** [nome do projeto]
-- **O que é:** [uma frase]
-- **Problema que resolve:** [uma frase]
-- **Quem usa:** [público específico]
-- **Stack:** [linguagens, frameworks, banco, infra]
-- **Repositório:** [url]
-- **Modo:** Solo (padrão) | Agent Teams (quando escalar — ver @BUILDFLOW-DEV.md)
+- **Name:** [project name]
+- **What it is:** [one sentence]
+- **Problem it solves:** [one sentence]
+- **Who uses it:** [specific audience]
+- **Stack:** [languages, frameworks, database, infra]
+- **Repository:** [url]
+- **Mode:** Solo (default) | Agent Teams (when scaling — see @BUILDFLOW-DEV.md)
 
 ---
 
-## Regra de Ouro
+## Golden Rule
 
 ```
-REVERSÍVEL   → execute + registre no ESTADO + reporte no resumo
-IRREVERSÍVEL → pare + descreva a ação + aguarde aprovação do Diretor
+REVERSIBLE   → execute + log to ESTADO + report in summary
+IRREVERSIBLE → stop + describe the action + wait for Director approval
 ```
 
-Reversível (age sem perguntar): criar arquivos, atualizar ESTADO, reorganizar conteúdo existente.
-
-Irreversível (para e pergunta): deletar arquivos, deploy em produção, gastar dinheiro, decisões que afetam múltiplos projetos, qualquer ação não reversível em 5 minutos.
+Reversible (act without asking): create files, update ESTADO, reorganize existing content.
+Irreversible (stop and ask): delete files, deploy to production, spend money, decisions affecting multiple projects, any action not reversible in 5 minutes.
 
 ---
 
-## Comportamento obrigatório
+## Mandatory behavior
 
-Estas regras se aplicam a TODA sessão, TODA tarefa, sem exceção.
+### Session start
+- Run `bash scripts/init.sh` if it exists
+- Read `progress.md` if it exists (handoff from previous session)
+- If sensors are configured, verify they pass before starting new work
 
-### Antes de executar tarefas complexas
-- Entreviste o Diretor para entender a intenção completa antes de agir
-- Para tarefas estruturais (arquitetura, specs, reorganizações), apresente a proposta PRIMEIRO, aguarde aprovação, depois execute
-- Se o pedido for ambíguo ou tiver múltiplas interpretações, PERGUNTE antes de assumir
+### Before complex tasks
+- Interview the Director to understand the complete intent before acting
+- For structural tasks, present the proposal FIRST, wait for approval, then execute
+- If the request is ambiguous, ASK before assuming
 
-### Durante a execução
-- Faça APENAS o que foi pedido. Não refatore código que não foi solicitado. Não adicione features além do escopo. Não mude bibliotecas existentes sem pedir. Não adicione error handling para cenários que não existem. Não crie abstrações para operações únicas
-- Se precisar desviar do pedido original, pare e explique por quê antes de fazer
-- Quando o contexto passar de 50%, alerte: "⚠️ Contexto acima de 50%. Recomendo /compact ou nova sessão."
+### During execution
+- Do ONLY what was requested. No unrequested refactors, no extra features, no library changes without asking, no abstractions for single-use operations
+- If you need to deviate, stop and explain why before doing it
+- When context passes 50%, alert: "⚠️ Context above 50%. Recommend /compact or new session."
 
-### Antes de declarar "feito"
-- Verifique: a tarefa foi completada 100% conforme pedido?
-- Liste o que foi feito e o que ficou pendente — nunca diga "feito" sem evidência
-- Se houve algo que não conseguiu completar, diga explicitamente
+### Before declaring "done"
+- Run computational sensors (lint, typecheck, tests) and fix issues found
+- If sensors fail after 3 fix attempts, escalate to Director with error details
+- List what was done and what remains — never say "done" without evidence
 
-### Ao final de toda sessão
-- Atualize a seção ESTADO abaixo
-- Resumo de execução:
+### Session end
+- Update ESTADO below
+- Write/update `progress.md` (format in @BUILDFLOW-DEV.md)
+- Summary: ✅ EXECUTED · ⏳ PENDING · 📝 DECISIONS · ⏭️ NEXT
+
+---
+
+## AI model
+
+- **Sonnet** → Default for 80% of work
+- **Haiku** → Research, classification, exploration sub-agents
+- **Opus** → Architecture, complex reviews, Agent Teams
+
+Start with Sonnet. Only escalate when genuinely needed.
+
+---
+
+## References
+
+Research/planning: @BUILDFLOW-PESQUISA.md · Development: @BUILDFLOW-DEV.md · Philosophy: @BUILDFLOW.md
+Load on demand — don't read all every session.
+
+---
+
+## Project constraints
+
+- [What no agent should do in this project]
+- [Files that must not be modified]
+- [Mandatory patterns — e.g., "always use TypeScript", "never commit secrets"]
+
+---
+
+## Sensors
+
+```bash
+# [Fill with project-specific commands. Examples in @BUILDFLOW-DEV.md]
+# lint:      [command]
+# typecheck: [command]
+# tests:     [command]
 ```
-✅ EXECUTADO: [lista com caminhos de arquivos]
-⏳ PENDENTE: [o que falta]
-📝 DECISÕES: [decisões tomadas nesta sessão]
-⏭️ PRÓXIMO: [ação específica para próxima sessão]
-```
 
 ---
 
-## Modelo de IA
+## Business context
 
-Escolha o modelo pela tarefa, não pelo hábito:
-
-- **Sonnet** → Padrão para 80% do trabalho (código, documentos, análise)
-- **Haiku** → Pesquisa, classificação, tarefas simples, sub-agents de exploração
-- **Opus** → Decisões arquiteturais, reviews complexos, raciocínio profundo, Agent Teams
-
-Regra: comece com Sonnet. Só escale para Opus quando a tarefa genuinamente exigir.
-
----
-
-## Referências do framework
-
-Para tarefas de pesquisa e planejamento: @BUILDFLOW-PESQUISA.md
-Para tarefas de desenvolvimento: @BUILDFLOW-DEV.md
-Para filosofia e princípios gerais: @BUILDFLOW.md
-
-Carregue esses arquivos sob demanda — não leia todos toda sessão.
-
----
-
-## Restrições do projeto
-
-- [O que nenhum agente deve fazer neste projeto]
-- [Arquivos que não devem ser modificados]
-- [Padrões obrigatórios — ex: "sempre use TypeScript", "nunca commite secrets"]
-
----
-
-## Contexto de negócio
-
-[Informações que o agente precisa para tomar boas decisões:
-cliente, objetivo, público, modelo de receita, plataformas, etc.
-Máximo 10 linhas. Se precisar de mais, linke para um documento.]
+[Max 10 lines. Client, objective, audience, revenue model, platforms.
+If more is needed, link to a document.]
 
 ---
 
 ## ESTADO
 
 ```
-# Atualizado: [data hora]
+# Updated: [datetime]
 
-## Feito
-- [lista específica com caminhos de arquivos afetados]
+## Done
+- [specific list with file paths]
 
-## Decisões tomadas
-- [decisão]: [motivo] → [impacto]
+## Decisions
+- [decision]: [reason] → [impact]
 
-## Pendente
-- [lista do que falta]
+## Pending
+- [what remains]
 
-## Próximo passo
-[uma ação específica e clara para a próxima sessão]
+## Next
+[one specific action for next session]
 ```

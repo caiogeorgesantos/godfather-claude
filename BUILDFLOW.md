@@ -1,132 +1,185 @@
 # 🤵 BUILDFLOW
-# Framework para construir produtos com agentes de IA — do zero ao infinito.
-# Versão: 3.0 · 2026 · Caio George Santos · MIT License
-# Este documento é referência. Não é lido automaticamente toda sessão.
-# O documento operacional é o BUILDFLOW-PROJETO.md de cada projeto.
+# Harness engineering framework for building products with AI agents.
+# Version: 4.0 · 2026 · Caio George Santos · MIT License
+# This document is reference. Not read automatically every session.
+# The operational document is each project's BUILDFLOW-PROJETO.md (→ CLAUDE.md).
 
-> *"Construa como um time de 50. Trabalhe como um time de um."*
-
----
-
-## O que é
-
-Framework operacional para solo founders construírem produtos com Claude.
-Define como trabalhar — não o que trabalhar.
-Cada projeto tem seu próprio BUILDFLOW-PROJETO.md que define o que trabalhar.
+> *"Build like a team of 50. Work like a team of one."*
 
 ---
 
-## Regra de Ouro
+## What it is
+
+Operational harness engineering framework for solo founders building products with Claude.
+Defines **how to work** — not what to work on.
+Each project has its own BUILDFLOW-PROJETO.md that defines what to work on.
+
+**Agent = Model + Harness.** The model is the engine. The harness is the steering, brakes, and dashboard. Without a harness, even the most powerful model produces unreliable results.
+
+---
+
+## Golden Rule
 
 ```
-REVERSÍVEL   → execute + registre no ESTADO + reporte no resumo
-IRREVERSÍVEL → pare + descreva a ação + aguarde aprovação do Diretor
+REVERSIBLE   → execute + log to ESTADO + report in summary
+IRREVERSIBLE → stop + describe the action + wait for Director approval
 ```
 
 ---
 
-## As 11 Fases
+## The Harness Model — 4 pillars
 
-| Fase | Nome | Onde roda | Entregável |
-|------|------|-----------|------------|
-| 0 | IDEIA | Claude.ai | Hipótese documentada |
-| 1 | PESQUISA | Claude.ai | Relatório validado (ver BUILDFLOW-PESQUISA.md) |
-| 2 | VALIDAÇÃO | Claude.ai + externo | Go/no-go com dados reais |
-| 3 | ESPECIFICAÇÃO | Claude.ai | SPEC.md aprovado |
-| 4 | BRAND | Claude.ai | Guia de marca |
-| 5 | PLANEJAMENTO | Claude.ai + Code | ARCH.md aprovado |
-| 6 | DESIGN | Claude.ai + v0.dev | Mockups aprovados |
-| 7 | EXECUÇÃO | Claude Code | Produto construído (ver BUILDFLOW-DEV.md) |
-| 8 | LANÇAMENTO | Claude Code + externo | Produto em produção |
-| 9 | MONITORAMENTO | Claude.ai | Relatório de inteligência |
-| 10 | EVOLUÇÃO | Claude.ai + Code | Decisão de evolução → reinicia na Fase 3 ou 4 |
+Everything in the framework serves one of four functions:
 
-O produto nunca para. Fase 10 alimenta Fase 3 ou 4 com dados reais.
+| Pillar | Function | BUILDFLOW implementation |
+|--------|----------|--------------------------|
+| **Constrain** | Prevent the agent from doing wrong things | Golden Rule, Hook 1 (irreversible action gate), Hook 5 (filesystem sandbox), Module Plan |
+| **Inform** | Give the agent the right context | CLAUDE.md, SPEC.md, ARCH.md, init.sh, Skills, Module Plan |
+| **Verify** | Check that the agent did it correctly | Computational sensors (lint, test, typecheck), inferential sensors (review agent), Quality Gates |
+| **Correct** | Fix when things go wrong | Self-repair loop, handoff artifacts, weekly efficiency radar, cleanup tasks |
 
 ---
 
-## Onde fazer cada tipo de tarefa
+## Guides and sensors
 
-| Tarefa | Ferramenta | Por quê |
-|--------|-----------|---------|
-| Estratégia, planejamento, brainstorming | **Claude.ai (Projects)** | Memória entre sessões, web search, integrações (Drive, Calendar, Gmail) |
-| Pesquisa profunda, análise de mercado | **Claude.ai (Deep Research)** | Pesquisa web automatizada, síntese de múltiplas fontes |
-| Desenvolvimento, automação, deploys | **Claude Code** | Acesso ao terminal, codebase, execução de comandos |
-| Documentos complexos (.docx, .pptx, .xlsx) | **Claude Cowork** | Skills de criação de arquivos, acesso a arquivos locais |
-| Organização de arquivos, tarefas desktop | **Claude Cowork** | Acesso ao filesystem, tarefas agendadas |
-| Tarefas recorrentes, agendadas | **Claude Cowork (Scheduled Tasks)** | Executa mesmo sem você presente |
-| Estudo e consolidação de aprendizados | **Claude.ai (Projects)** ou **NotebookLM** | Contexto persistente por tema |
+Borrowed from Thoughtworks' harness engineering model. Two types of controls:
 
-Regra: não troque de ferramenta para evitar trocar. Troque quando a tarefa exige. Cada ferramenta tem força diferente.
+**Guides (feedforward)** — steer the agent *before* it acts:
+- CLAUDE.md, SPEC.md, ARCH.md → inform intent and constraints
+- Module Plan → scope exactly which files to touch
+- Skills → specialized knowledge loaded on demand
+- init.sh → dynamic context injected at session start
 
----
+**Sensors (feedback)** — observe *after* the agent acts and enable self-correction:
+- **Computational** (deterministic, fast, cheap): linter, typecheck, tests, dep-cruiser, structural tests
+- **Inferential** (semantic, slower, expensive): review agent in separate session, LLM-as-judge
 
-## Modelo de IA — quando usar cada um
-
-| Modelo | Custo relativo | Quando usar |
-|--------|---------------|-------------|
-| **Haiku** | $ | Pesquisa, classificação, tarefas simples, sub-agents de exploração |
-| **Sonnet** | $$ | 80% do trabalho diário: código, documentos, análise, implementação |
-| **Opus** | $$$$$ | Decisões arquiteturais, reviews complexos, Agent Teams, raciocínio profundo |
-
-Regra: comece com Sonnet. Só escale para Opus quando o resultado com Sonnet não for suficiente.
-Opus custa ~5x mais que Sonnet. Use com intenção, não por hábito.
+**The steering loop**: whenever an issue happens more than once, improve the guides or sensors to prevent it from recurring. The human steers the harness, not the agent directly.
 
 ---
 
-## Divisão de responsabilidades
+## The 11 Phases
 
-### A IA faz sozinha (automático, sem o Diretor precisar pedir):
-- Entrevistar antes de tarefas complexas
-- Escolher o modelo adequado para a tarefa
-- Verificar completude antes de declarar "feito"
-- Pedir clarificação quando o pedido é ambíguo
-- Atualizar ESTADO ao final de sessões
-- Alertar quando contexto está degradando (>50%)
-- Não sobre-engenheirar (seguir só o escopo pedido)
-- Buscar código existente antes de criar novo
+| Phase | Name | Where it runs | Deliverable |
+|-------|------|---------------|-------------|
+| 0 | IDEA | Claude.ai | Documented hypothesis |
+| 1 | RESEARCH | Claude.ai | Validated report (see BUILDFLOW-PESQUISA.md) |
+| 2 | VALIDATION | Claude.ai + external | Go/no-go with real data |
+| 3 | SPECIFICATION | Claude.ai | SPEC.md approved |
+| 4 | BRAND | Claude.ai | Brand guide |
+| 5 | PLANNING | Claude.ai + Code | ARCH.md approved |
+| 6 | DESIGN | Claude.ai + v0.dev | Mockups approved |
+| 7 | EXECUTION | Claude Code | Product built (see BUILDFLOW-DEV.md) |
+| 8 | LAUNCH | Claude Code + external | Product in production |
+| 9 | MONITORING | Claude.ai | Intelligence report |
+| 10 | EVOLUTION | Claude.ai + Code | Evolution decision → restarts at Phase 3 or 4 |
 
-### O Diretor faz (decisões humanas):
-- Aprovar specs e arquiteturas antes de execução
-- Review final de entregas críticas
-- Decisões de negócio (priorização, go/no-go, pricing)
-- Aprovar gastos (deploys, APIs pagas, serviços externos)
-- Decidir quando escalar para Agent Teams
-- Definir escopo e intenção de cada tarefa
-
-### A IA sugere, Diretor decide:
-- Quando iniciar nova sessão (IA alerta, Diretor decide)
-- Quando escalar complexidade (IA recomenda, Diretor aprova)
-- Quando um projeto precisa de mais contexto/skills
+The product never stops. Phase 10 feeds Phase 3 or 4 with real-world data.
 
 ---
 
-## Princípios de context engineering
+## Where to do each type of task
 
-1. **Sessões curtas e focadas.** Uma tarefa por sessão. Não reutilize sessões para tarefas diferentes.
-2. **CLAUDE.md enxuto.** O BUILDFLOW-PROJETO.md deve ter menos de 120 linhas. Se crescer além disso, mova conhecimento para Skills.
-3. **Skills > CLAUDE.md** para conhecimento especializado. Skills carregam sob demanda, CLAUDE.md carrega toda sessão.
-4. **`/compact` a 50%.** Não espere o auto-compact a 95%. Ao compactar, diga o que preservar.
-5. **`/clear` para trocar de tarefa.** Não misture planejamento e execução na mesma sessão.
-6. **`.claudeignore`** para excluir node_modules, dist, lock files, build artifacts.
-7. **Prompts específicos.** "Fix auth bug in src/auth.js" gasta menos tokens que "fix the bug."
-8. **Se o agente contradizer decisões anteriores:** contexto degradou. Iniciar nova sessão.
+| Task | Tool | Why |
+|------|------|-----|
+| Strategy, planning, brainstorming | **Claude.ai (Projects)** | Memory across sessions, web search, integrations |
+| Deep research, market analysis | **Claude.ai (Deep Research)** | Automated web research, multi-source synthesis |
+| Development, automation, deploys | **Claude Code** | Terminal access, codebase, command execution |
+| Complex documents (.docx, .pptx, .xlsx) | **Claude Cowork** | File creation skills, local file access |
+| File organization, desktop tasks | **Claude Cowork** | Filesystem access, scheduled tasks |
+| Recurring/scheduled tasks | **Claude Cowork (Scheduled Tasks)** | Runs even without you present |
+| Study and learning consolidation | **Claude.ai (Projects)** or **NotebookLM** | Persistent context per topic |
 
----
-
-## Instalação
-
-1. Copie `BUILDFLOW-PROJETO.md` para a raiz de cada projeto e renomeie para `CLAUDE.md`
-2. Preencha a identidade do projeto, restrições e contexto de negócio
-3. Para projetos novos, comece pelo `BUILDFLOW-PESQUISA.md` no Claude.ai
-4. Instale os hooks de `BUILDFLOW-HOOKS.md` no `.claude/settings.json`
-5. Guarde `BUILDFLOW.md`, `BUILDFLOW-PESQUISA.md` e `BUILDFLOW-DEV.md` em `~/Documents/Claude/` como referência
+Rule: don't switch tools to avoid switching. Switch when the task demands it.
 
 ---
 
-## Licença
+## AI model — when to use each one
 
-MIT — livre para usar, modificar e distribuir com atribuição.
+| Model | Relative cost | When to use |
+|-------|---------------|-------------|
+| **Haiku** | $ | Research, classification, simple tasks, exploration sub-agents |
+| **Sonnet** | $$ | 80% of daily work: code, documents, analysis, implementation |
+| **Opus** | $$$$$ | Architectural decisions, complex reviews, Agent Teams, deep reasoning |
+
+Rule: start with Sonnet. Only escalate to Opus when Sonnet results are genuinely insufficient.
+
+---
+
+## Division of responsibilities
+
+### The AI does autonomously (every session, every task):
+- Interview before complex tasks
+- Choose the appropriate model for the task
+- Run init.sh at session start (if it exists)
+- Verify completeness before declaring "done"
+- Run computational sensors before declaring "done"
+- Ask for clarification when the request is ambiguous
+- Update ESTADO at session end
+- Write handoff artifact at session end
+- Alert when context is degrading (>50%)
+- Don't over-engineer (follow only the requested scope)
+- Search for existing code before creating new
+
+### The Director does (human decisions):
+- Approve specs and architectures before execution
+- Final review of critical deliverables
+- Business decisions (prioritization, go/no-go, pricing)
+- Approve spending (deploys, paid APIs, external services)
+- Decide when to escalate to Agent Teams
+- Define scope and intent for each task
+- Steer the harness (improve guides and sensors when issues recur)
+
+### The AI suggests, Director decides:
+- When to start a new session (AI alerts, Director decides)
+- When to escalate complexity (AI recommends, Director approves)
+- When a project needs more context/skills
+
+---
+
+## Context engineering principles
+
+1. **Short, focused sessions.** One task per session. Don't reuse sessions for different tasks.
+2. **Lean CLAUDE.md.** BUILDFLOW-PROJETO.md must be under 120 lines. If it grows beyond that, move knowledge to Skills.
+3. **Skills > CLAUDE.md** for specialized knowledge. Skills load on demand, CLAUDE.md loads every session.
+4. **`/compact` at 50%.** Don't wait for auto-compact at 95%. When compacting, state what to preserve.
+5. **`/clear` to switch tasks.** Don't mix planning and execution in the same session.
+6. **`.claudeignore`** to exclude node_modules, dist, lock files, build artifacts.
+7. **Specific prompts.** "Fix auth bug in src/auth.js" costs fewer tokens than "fix the bug."
+8. **If the agent contradicts previous decisions:** context has degraded. Start a new session.
+9. **init.sh runs first.** Every session begins by reading progress and running the bootstrap script.
+10. **Cost awareness.** Opus costs ~5x Sonnet. Agent Teams consume 3-7x single session. Before escalating to Opus or Agent Teams, state the reason. If a session runs over 30 minutes on Opus, pause and ask if the Director wants to continue.
+
+---
+
+## Installation
+
+1. Copy `BUILDFLOW-PROJETO.md` to each project root and rename to `CLAUDE.md`
+2. Fill in project identity, constraints, and business context
+3. For new projects, start with `BUILDFLOW-PESQUISA.md` in Claude.ai
+4. Install hooks from `BUILDFLOW-HOOKS.md` into `.claude/settings.json`
+5. Create `scripts/init.sh` following the template in BUILDFLOW-DEV.md
+6. Configure computational sensors (linter + tests) for the project's stack
+7. Keep `BUILDFLOW.md`, `BUILDFLOW-PESQUISA.md`, and `BUILDFLOW-DEV.md` in `~/Documents/Claude/` as reference
+
+---
+
+## Research base
+
+Built from:
+- Anthropic — Effective Harnesses for Long-Running Agents (2025)
+- Anthropic — Harness Design for Long-Running Application Development (2026)
+- Anthropic — Context Engineering for AI Agents (2025-2026)
+- OpenAI — Harness Engineering: Leveraging Codex in an Agent-First World (2026)
+- Thoughtworks / Birgitta Böckeler — Harness Engineering for Coding Agent Users (2026)
+- Red Hat — Harness Engineering: Structured Workflows for AI-Assisted Development (2026)
+- Real project experience — SEO, legaltech, SaaS, product development (2025-2026)
+
+---
+
+## License
+
+MIT — free to use, modify, and distribute with attribution.
 Copyright (c) 2026 Caio George Santos
 
-*Construa como um time de 50. Trabalhe como um time de um.* 🤵
+*Build like a team of 50. Work like a team of one.* 🤵

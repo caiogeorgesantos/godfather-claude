@@ -1,154 +1,154 @@
 # BUILDFLOW-PESQUISA
-# Fase 1 do framework buildflow. Roda no Claude.ai, não no Claude Code.
-# Versão: 3.0 · 2026
+# Phase 1 of the buildflow framework. Runs on Claude.ai, not Claude Code.
+# Version: 4.0 · 2026
 
-> *"Nunca tome uma decisão baseada em estimativas quando existem dados reais."*
-
----
-
-## O que é
-
-Protocolo para Fase 1 (Pesquisa) do buildflow.
-Termina com um relatório de pesquisa validado que alimenta a Fase 3 (Especificação/SPEC.md).
-Nada é especificado até que a pesquisa esteja completa e revisada.
+> *"Never make a decision based on estimates when real data exists."*
 
 ---
 
-## Como funciona
+## What it is
 
-A pesquisa começa com uma **entrevista** — a IA pergunta, o Diretor responde.
-Depois, a IA pesquisa e consolida. O Diretor revisa e aprova.
+Protocol for Phase 1 (Research) of buildflow.
+Ends with a validated research report that feeds Phase 3 (Specification/SPEC.md).
+Nothing is specified until research is complete and reviewed.
+
+---
+
+## How it works
+
+Research starts with an **interview** — the AI asks, the Director answers.
+Then the AI researches and consolidates. The Director reviews and approves.
 
 ```
-Entrevista (7 blocos) → Pesquisa profunda → Relatório consolidado → Aprovação do Diretor → Fase 3
+Interview (7 blocks) → Deep research → Consolidated report → Director approval → Phase 3
 ```
 
 ---
 
-## Protocolo de entrevista — 7 blocos
+## Interview protocol — 7 blocks
 
-A IA deve conduzir a entrevista usando os blocos abaixo como guia.
-Não apresente o formulário inteiro de uma vez — faça bloco por bloco, conversacionalmente.
-Aceite respostas parciais. Sinalize quando informação está faltando mas não bloqueie.
+The AI must conduct the interview using the blocks below as a guide.
+Don't present the entire form at once — go block by block, conversationally.
+Accept partial answers. Flag when information is missing but don't block.
 
-### Bloco 1 — Visão
-- O que é este projeto?
-- Que problema resolve?
-- Quem usa (ser específico — não "pessoas", mas quem exatamente)?
-- Como é o sucesso em 6 meses (métrica concreta)?
-- O que faria você abandonar o projeto?
+### Block 1 — Vision
+- What is this project?
+- What problem does it solve?
+- Who uses it (be specific — not "people", but who exactly)?
+- What does success look like in 6 months (concrete metric)?
+- What would make you abandon the project?
 
-### Bloco 2 — Negócio
-- Como este produto ganha dinheiro?
-- Existe modelo de receita secundário?
-- Qual o modelo de precificação (assinatura / único / freemium / B2B)?
-- Quem paga (o usuário, um terceiro, anunciantes)?
-- Que dados existentes são relevantes (leads, vendas, Ads, CRM, GSC)?
-- Que dados de conversão existem (o que converte, o que não)?
+### Block 2 — Business
+- How does this product make money?
+- Is there a secondary revenue model?
+- What's the pricing model (subscription / one-time / freemium / B2B)?
+- Who pays (the user, a third party, advertisers)?
+- What existing data is relevant (leads, sales, Ads, CRM, GSC)?
+- What conversion data exists (what converts, what doesn't)?
 
-### Bloco 3 — Mercado
-- Quem são os 3 principais concorrentes (nomeie-os)?
-- O que fazem bem que você precisa igualar?
-- O que fazem mal que é sua oportunidade?
-- Existe referência global (fora do Brasil) que faz isso bem?
-- Qual o tamanho realista do mercado (não estime — se não sabe, diga)?
+### Block 3 — Market
+- Who are the top 3 competitors (name them)?
+- What do they do well that you need to match?
+- What do they do poorly that is your opportunity?
+- Is there a global reference (outside Brazil) that does this well?
+- What's the realistic market size (don't estimate — if unknown, say so)?
 
-### Bloco 4 — Marca
-- Existe guia de marca / style guide?
-- Qual o tom de voz?
-- O que a marca absolutamente NÃO faz ou diz?
-- Que referências visuais inspiram (sites, apps, produtos)?
-- Existe logo e paleta de cores?
+### Block 4 — Brand
+- Does a brand guide / style guide exist?
+- What's the tone of voice?
+- What does the brand absolutely NOT do or say?
+- What visual references inspire (sites, apps, products)?
+- Does a logo and color palette exist?
 
-### Bloco 5 — Contexto técnico
-- Existe sistema que precisa se integrar a este?
-- Existe banco de dados? O que tem nele?
-- Existe código? Qual linguagem/framework?
-- Existe domínio e hospedagem?
-- Qual o budget para infraestrutura por mês?
+### Block 5 — Technical context
+- Is there a system this needs to integrate with?
+- Does a database exist? What's in it?
+- Does code exist? What language/framework?
+- Does a domain and hosting exist?
+- What's the monthly infrastructure budget?
 
-### Bloco 6 — Restrições
-- Qual o prazo de lançamento?
-- O que não pode mudar em hipótese alguma?
-- O que requer revisão legal/compliance?
-- Quem precisa aprovar antes de ir ao ar?
+### Block 6 — Constraints
+- What's the launch deadline?
+- What cannot change under any circumstances?
+- What requires legal/compliance review?
+- Who needs to approve before going live?
 
-### Bloco 7 — Padrão de qualidade
-- Qual referência global de qualidade quer igualar ou superar?
-- O que te faria dizer "este é o melhor do Brasil"?
-- O que te faria dizer "este é o melhor do mundo"?
-- Está disposto a atrasar o lançamento para atingir esse nível?
-
----
-
-## Regras antes de pesquisar
-
-Antes de iniciar a pesquisa, confirme:
-- [ ] Todos os 7 blocos da entrevista foram cobertos (respostas parciais ok, desde que sinalizadas)
-- [ ] Dados existentes foram compartilhados (GSC, Supabase, Ads, CRM) — se existirem
-- [ ] Guia de marca foi lido — se existir
-- [ ] Dados de conversão foram analisados — se existirem
-
-Se informação crítica estiver faltando: sinalize e prossiga com o que tem. Não bloqueie.
+### Block 7 — Quality standard
+- What global quality reference do you want to match or surpass?
+- What would make you say "this is the best in Brazil"?
+- What would make you say "this is the best in the world"?
+- Are you willing to delay the launch to reach that level?
 
 ---
 
-## Pesquisa
+## Rules before researching
 
-Use Deep Research ou pesquisa manual para cobrir:
+Before starting research, confirm:
+- [ ] All 7 interview blocks were covered (partial answers ok, as long as flagged)
+- [ ] Existing data was shared (GSC, Supabase, Ads, CRM) — if they exist
+- [ ] Brand guide was read — if it exists
+- [ ] Conversion data was analyzed — if it exists
 
-1. **Mercado** — players, gaps, oportunidades, tamanho real
-2. **Usuário** — quem converte, por que, o que bloqueia
-3. **Concorrentes** — análise profunda dos top 3-5
-4. **Modelo de negócio** — opções de receita validadas, benchmarks de pricing
-5. **Paisagem técnica** — opções de stack, riscos, integrações
-6. **Conteúdo e marca** — linguagem que usuários usam, tom que ressoa
-
-Regras:
-- Valide números com fontes reais. Sinalize explicitamente o que é estimativa vs fato.
-- Foque no que é acionável, não teórico.
-- Máximo 400 linhas no relatório. Se precisar mais, divida por área.
+If critical information is missing: flag it and proceed with what's available. Don't block.
 
 ---
 
-## Relatório consolidado
+## Research
 
-O relatório deve conter:
+Use Deep Research or manual research to cover:
 
-1. Resumo de mercado — validado com dados
-2. Perfil do usuário — quem converte e por quê
-3. Análise de concorrentes — forças, fraquezas, gaps
-4. Modelo de negócio — opções validadas
-5. Paisagem técnica — stack recomendada com justificativa
-6. Sinais de conteúdo e marca
-7. **Decisões pendentes** — o que ainda precisa ser resolvido antes de especificar
-8. **Riscos** — o que pode dar errado e como mitigar
+1. **Market** — players, gaps, opportunities, real size
+2. **User** — who converts, why, what blocks them
+3. **Competitors** — deep analysis of top 3-5
+4. **Business model** — validated revenue options, pricing benchmarks
+5. **Technical landscape** — stack options, risks, integrations
+6. **Content and brand** — language users use, tone that resonates
 
-Toda descoberta deve ser rastreável. Sem estimativas como fatos. Sem suposições — sinalize desconhecidos.
-
----
-
-## Handoff para próxima fase
-
-A pesquisa termina quando:
-- [ ] Relatório consolidado produzido
-- [ ] Diretor revisou e aprovou
-- [ ] Decisões pendentes anotadas para Fase 3
-
-O relatório vai para o Project do claude.ai como conhecimento do projeto.
-Ele alimenta diretamente a Fase 3 (Especificação) onde o SPEC.md é produzido.
+Rules:
+- Validate numbers with real sources. Explicitly flag what is estimate vs fact.
+- Focus on what is actionable, not theoretical.
+- Maximum 400 lines in the report. If more is needed, split by area.
 
 ---
 
-## Erros comuns
+## Consolidated report
 
-**Priorizar sem dados reais.** Volumes estimados levam a prioridades erradas. Valide com ferramentas reais antes de definir o que construir primeiro.
+The report must contain:
 
-**Ler o guia de marca tarde.** Guia de marca pode mudar toda a arquitetura. Leia antes de qualquer estrutura.
+1. Market summary — validated with data
+2. User profile — who converts and why
+3. Competitor analysis — strengths, weaknesses, gaps
+4. Business model — validated options
+5. Technical landscape — recommended stack with justification
+6. Content and brand signals
+7. **Pending decisions** — what still needs to be resolved before specifying
+8. **Risks** — what can go wrong and how to mitigate
 
-**Ignorar dados de conversão existentes.** Dados de conversão podem revelar que categorias inteiras convertem 0%. Analise antes de planejar.
+Every finding must be traceable. No estimates as facts. No assumptions — flag unknowns.
 
-**Pular o modelo de negócio.** Monetização deve ser pesquisada e validada, não assumida.
+---
+
+## Handoff to next phase
+
+Research ends when:
+- [ ] Consolidated report produced
+- [ ] Director reviewed and approved
+- [ ] Pending decisions noted for Phase 3
+
+The report goes into the Claude.ai Project as project knowledge.
+It directly feeds Phase 3 (Specification) where SPEC.md is produced.
+
+---
+
+## Common mistakes
+
+**Prioritizing without real data.** Estimated volumes lead to wrong priorities. Validate with real tools before defining what to build first.
+
+**Reading the brand guide late.** The brand guide can change the entire architecture. Read it before any structure.
+
+**Ignoring existing conversion data.** Conversion data may reveal that entire categories convert at 0%. Analyze before planning.
+
+**Skipping the business model.** Monetization must be researched and validated, not assumed.
 
 ---
 
